@@ -42,7 +42,7 @@ def count_1():
 
 
 # 输入一个无序数组data[] , 且数组中无重复元素，查找出第二大元素。要求: 时间复杂度为O(n)。
-# 先set去重，然后转化为list，然后[-2]
+# 先set去重，然后转化为list，排序，然后[-2]
 def search_second_max_num():
     input_list = input().split()
     input_list_int = [int(i) for i in input_list]
