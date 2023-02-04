@@ -3,3 +3,5 @@
     git add . :添加所有改动的文件到暂存区
     git commit -m: 提交暂存区到本地仓库
     git push ：推送到远程仓库
+    gti checkout branch名：切换分支
+
