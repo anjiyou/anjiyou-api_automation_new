@@ -172,8 +172,6 @@ def pre_order_traversal(self, root):
     result = [root.val] + [self.pre_order_traversal(root.left)] + [self.pre_order_traversal(root.right)]
     return result
 
-# map()函数的原型是map(function,iterable,……),返回map对象
-
 # 字典排序：dict_ = sorted(dict_.items(),key=lambda x:x[0]) 返回列表元组
 
 # 先找跟目录下的conftest下的类夹具->测试目录->测试目录下conftest里的类夹具->测试用例module里的类前置
@@ -346,5 +344,6 @@ pytest+requests+allure+yaml
 
 filter(func,iterable):返回filter对象，将序列里的所有元素根据func进行判断，True则放入新的序列里
 map(func,iterable):返回map对象，将序列里的所有元素根据func进行修改，然后放入新的序列里
-zip(iterable1,iterable2):返回zip对此昂，将iterable1里的元素作为key，将iterable1里的元素作为value，存放在zip对象里
+zip(iterable1,iterable2):返回zip对象，将iterable1里的元素作为key，将iterable1里的元素作为value，存放在zip对象里
 reduce(func,iterable):返回序列里的每个元素经过func后的累计结果，functools
+sorted(iterable,key=func,reserve=)：排序，返回list

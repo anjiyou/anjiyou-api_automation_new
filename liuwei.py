@@ -1,5 +1,2 @@
-from functools import reduce
-
-a = [1,2,3]
-value = reduce(lambda x,y:x+y,a)
-print(type(value),value)
+liuwei = {4:"jiuli",1:"liuwei",3:"a"}
+print(dict(sorted(liuwei.items(),key=lambda x:x[1])))
