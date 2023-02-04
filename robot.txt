@@ -1,0 +1,12 @@
+用例规则：
+    *** settings ***
+    *** variables ***
+    *** test cases ***
+    *** keywords ***
+
+robot原理
+    1.先生成系统变量和log.html路径、xml路径、report.html路径
+    2.查找测试用例文件生成测试用例集
+    3.根据test cases里的case从上往下依次执行case
+    4.用例执行的过程会自动的记录在xml文件里
+    5.用例执行结束后，根据xml文件里的数据生成html日志和报告
