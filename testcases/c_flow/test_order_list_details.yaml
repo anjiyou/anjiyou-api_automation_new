@@ -1,0 +1,46 @@
+-
+  feature: 业务流-成功获取订单详情
+  story: 获取鉴权码token接口
+  title: 成功获取token
+  request:
+    method: post
+    url: ?s=user/login
+    data:
+      accounts: baili
+      pwd: baili123
+      type: username
+  extract:
+    token: '"token":"(.+?)"'
+  validate:
+    code: 200
+    contains: token
+
+-
+  feature: 业务流-成功获取订单详情
+  story: 订单列表接口
+  title: 成功获取订单列表
+  request:
+    method: post
+    url: ?s=order/index
+    params:
+      token: ${read_yaml(token)}
+  extract:
+    id: '"id":"(.+?)"'
+  validate:
+    code: 200
+    contains: success
+
+-
+  feature: 业务流-成功获取订单详情
+  story: 订单详情接口
+  title: 成功获取订单详情
+  request:
+    method: post
+    url: ?s=order/detail
+    params:
+      token: ${read_yaml(token)}
+    json:
+      id: ${read_yaml(id)}
+  validate:
+    code: 200
+    contains: success

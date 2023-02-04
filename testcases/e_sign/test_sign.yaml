@@ -1,0 +1,11 @@
+-
+  feature: sign签名
+  story: sign签名接口
+  title: sign签名成功
+  request:
+    method: post
+    url: http://101.34.221.219:5000/md5login?m=u&c=login&a=dorun
+    headers:
+      sign: ${sign(testcases/e_sign/test_sign.yaml)}
+  validate:
+    code: 200

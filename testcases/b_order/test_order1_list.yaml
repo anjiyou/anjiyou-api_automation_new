@@ -1,0 +1,15 @@
+-
+  feature: 我的订单
+  story: 订单列表
+  title: 成功获取订单列表
+  request:
+    method: post
+    url: ?s=order/index
+    params:
+      token: ${read_yaml(token)}
+  extract:
+    id: '"id":"(.+?)"'
+  validate:
+    code: 200
+    contains: success
+

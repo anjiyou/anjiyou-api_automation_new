@@ -1,0 +1,57 @@
+pytest+requests+yaml+allure
+优势：
+    1.只需要编写yaml文件即可
+        1.创建一个module，包含一个测试总类、testcases目录下所有yaml文件路径、自动生成测试用例方法
+        2.遍历所有的yaml路径，调用创建测试用例方法，然后返回此方法
+        3.将返回的测试用例方法通过反射setatte(class,func)添加到测试类里去，pytest执行是自动执行所有的yaml用例
+    2.通过session调用自动实现cookie关联
+        1.通过request.request()或者requests.post()、requests.get()调用接口，cookie的传递需要手动传递
+        2.通过sessions.Session().request()自动传递cookie
+    3.接口关联：
+        1.下一个接口的参数是从上一个接口的返回值里获取的，这就涉及到两个方面
+        2.一是返回值的提取，接口调用需要提取返回值时，在yaml文件里设置extract关键字，然后设置要提取的字段以及正则表达式或json表达式
+        3.接口调用结束后，会判断yaml文件里的extract关键字来决定是否需要调用提取方法进行提取，
+        4.有extract，先遍历extract的key和value，通过value的正则或json表达式进行提取，正则是提取response.text，json是提取response.json()
+        5.提取完成后将key:value保存到yaml文件里
+        6.二是后面的接口调用需要的参数值从前面提取到的yaml文件里获取
+        7.通过反射调用python方法来获取，在yaml文件里设置${func(key)},在执行用例前，查找标识，然后通过反射getattr()获取到函数
+        8.然后调用获取到的函数，从yaml文件里读取到需要的value，最后在替换yaml内容
+    4.数据驱动：
+        1.首先需要在用例方法名上添加@pytest.mark.parametrize("",read_yaml(yaml_path)),数据驱动的标识
+        2.第一个参数是用例的名称，第二个参数是具体的用例信息,字典列表的形式
+        3.在yaml文件里添加key为parametrize，value为list，第一个list元素为标题，在需要数据驱动的地方使用$title
+        4.在读取yaml内容时会判断是否有parametrize关键字，有说明需要进行数据驱动
+        5.当不进行数据驱动时，case_info是list里有一个字典元素，需要进行数据驱动时我们要将读取到的yaml内容修改成list里含有多个dict的形式
+        6.这样在进行解包时会自动的执行所有的dict内容，一个dict相当于一个case
+        7.替换方式是替换yaml文件里设置的$title为parametrize下的对应value
+    5.业务场景测试：
+        1.单接口下是一个yaml文件里包含一个dict，业务场景测试时在一个yaml文件里配置多个dict
+        2.在standard_yaml方法里会对yaml内容进行判断，读取的yaml内容如果包含多个dict，说明是业务场景测试
+        3.返回的case_info会在最外层加上list，即case_info = [[{},{},{},.....]]
+        4.在执行测试用例解包的时候会解掉最外层的list，这时候case_info是字典列表的形式
+        5.使用循环遍历字典列表的所有case，然后再进行接口调用
+    6.支持MD5、RSA、base64加密
+        MD5只加密不解密: hashlib().md5(key).hexdigest()
+        base64非对称加密: base64.b64encode(key)
+        RSA对称加密: byte_value = rsa.encrypt(key,public_key)  base64.b64encode(byte_value)
+    7.支持签名
+        1.先获取到url、params、data里面的数据，通过ascii码进行升序排序
+        2.然后转换成key=value的形式通过&拼接
+        3.在前面添加appid、appsecret，后面添加order_num|tima_stamp
+        4.进行32位MD5加密，然后转换成大写
+        5.最后将sign放在headers里
+    8.支持自定义夹具
+        1.用例执行前清空yaml文件
+        2.需要数据库断言的用例，执行前连接数据库，用例执行结束后关闭数据库，通过yield唤醒后置
+    9.支持公共参数化自动添加
+    10.定制化报告
+    11.支持数据库断言
+    12.日志记录
+遇到的问题：
+    1.取值问题：re或jsonpath
+    2.提取文件里的内容未被清除：添加前置夹具，每次执行用例前先清空
+    3.cookie关联，手动添加cookie，通过session自动关联cookie
+    4.接口关联的时候，因为python是根据ascii码从上往下执行，所有要把先执行的接口放在上面
+
+
+

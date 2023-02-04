@@ -1,0 +1,350 @@
+视频中用到的项目地址如下：
+一、接口专题：
+接口地址：http://47.107.116.139/showdoc/web/?#/1
+密码：msjy123
+二、实战项目
+1.码尚金融地址：http://47.107.116.139/fangwei/m.php?m=Public&a=login&
+用户名：admin
+密码：msjy123
+2.码尚WMS仓库管理平台：http://101.34.221.219:8012/#/web/
+用户名：mashang
+密码：msjy123
+3.码尚商城地址：http://101.34.221.219:8010/admin_beifan.php?s=admin/logininfo.html
+后台用户名：admin
+后台密码：TipqSJUe6HaQHs
+前台支付宝账号：iquask0860@sandbox.com
+前台登录密码：111111
+前台支付密码：111111
+4.BBS论坛地址：http://47.107.116.139/phpwind/
+用户名：admin
+密码：msjy123
+
+二叉树遍历：
+    先序遍历：根左右，按照根左右的顺序沿一定的路径遍历路径上的所有节点
+    中序遍历：左根右，首先遍历左子树，然后访问根节点，最后遍历右子树
+    后序遍历：左右根，首先遍历左子树，然后遍历右子树，最后访问根节点
+    二叉树的性质
+        性质1：二叉树第i层上的结点数目最多为2i-1(i>=1)
+        性质2：深度为k的二叉树至多有2k-1个结点（k>=1）
+        性质3：包含n个结点的二叉树的高度至少为(log2n)+1
+        性质4：在任意一棵二叉树中，若终端结点的个数为n0，度为2的结点数为n2，则n0=n2+1
+
+# 输入一个整数n，求从1到n这n个整数(十进制)中1出现的次数。要求空间复杂度为O(n)。
+# 先遍历1-n所有的数，然后转化为str，相加，count("1")
+def count_1():
+    input_num = int(input())
+    count_num_str = ""
+    for i in range(input_num + 1):
+        str_i = str(i)
+        count_num_str += str_i
+    count_num = count_num_str.count("1")
+    print(count_num)
+
+
+# 输入一个无序数组data[] , 且数组中无重复元素，查找出第二大元素。要求: 时间复杂度为O(n)。
+# 先set去重，然后转化为list，然后[-2]
+def search_second_max_num():
+    input_list = input().split()
+    input_list_int = [int(i) for i in input_list]
+    input_list_int_set = set(input_list_int)
+    input_list_int = list(input_list_int_set)
+    input_list_int.sort()
+    second_max = input_list_int[-2]
+    print(input_list_int)
+    print(second_max)
+
+
+"""
+值传递、引用传递、赋值传递
+    1.形参与实参
+        形参：方法被调用时需要传进来的参数，只有方法被调用时才有意义,也就是方法调用时才会被分配内存空间，方法执行结束后释放内存空间，形参不存在
+        实参：方法被调用时传入的实际值,方法调用前已经分配了内存空间
+    2.数据类型：相同数据类型的存储形式
+    3.变量及其赋值
+        不可变对象赋值
+        可变对象赋值：内存地址不变,内容改变
+        变量删除,对象未被引用会被删除,对象被引用不会被删除
+    4.python的参数传递
+        python的参数传递是赋值传递或叫对象的引用传递
+        python里的所有数据类型都是对象，参数传递不是指向具体的内存地址而是指向对象，所以参数传递时只是将变量指向对象而已
+    5.深拷贝和浅拷贝
+        浅拷贝：
+            不可变单层数据对象：不会生成新的内存空间
+            不可变多层数据对象：无论里面的元素可变不可变都不会对里面的元素生成新的内存空间
+            可变单层数据对象：会生成新的内存空间
+            可变多层数据对象：
+                针对里元素不可变：针对里元素不会生成新的内存空间
+                针对里元素可变：针对里元素不会生成新的内存空间
+        深拷贝：
+            不可变单层数据对象：不会生成新的内存空间
+            不可变多层数据对象：
+                针对里元素不可变：针对里元素外元素都不会生成新的内存空间
+                针对里元素可变：针对里元素外元素都会生成新的内存空间
+            可变单层数据对象：会生成新的内存空间
+            可变多层数据对象：
+                针对里元素不可变：针对外元素会生成新的内存空间，里元素不会
+                针对里元素可变：针对里元素外元素都会生成新的内存空间
+"""
+
+
+# 输入数据有多组，每组一行，仅包含数字和英文字母，不包含转义等其他特殊字符，输入数据最大长度为10
+def _():
+    while True:
+        result = ""
+        try:
+            input_data = input("请输入数据：")
+            input_data_len = len(input_data)
+            for i in range(0, input_data_len):
+                if i == 0:
+                    if input_data_len == 1:
+                        result = input_data[i]
+                    elif input_data[i] != input_data[i + 1] and input_data_len != 1:
+                        result += input_data[i]
+                elif i == input_data_len - 1:
+                    if input_data[i] != input_data[i - 1]:
+                        result += input_data[i]
+                elif input_data[i] != input_data[i + 1] and input_data[i] != input_data[i - 1]:
+                    result += input_data[i]
+            if result == "":
+                result = "no"
+            print(result)
+        except Exception as e:
+            break
+
+
+# _:类内部使用，绕过直接 _
+# __：本类内部使用,绕过 _类名__
+
+# 常用的双下线
+# __init__:实例类对象
+# __str__:修改print打印内容
+# __file__:当前文件的路径
+# 类名.__mro__:查看类的继承关系
+# __name__:在当前文件执行,模块名->导入使用
+
+
+# 生成器
+# 含有yield的方法
+# 和for搭配使用
+# 生成器属于迭代器
+
+# ord()将字符返回ascii码、chr()将ascii码返回字符、bin()、hex()、sorted()、isalpha()、isdigital()、isspace()、count()
+
+# re.match(),从开头开始匹配
+# re.search(),任意位置匹配
+# re.sub((pattern),replace,str)，替换匹配放入内容  *\1*
+# re.findall(pattern,str) 查找指定所有内容
+
+# STMP是应用层的邮件传输协议，ssh是应用层基础上的安全协议
+
+# 冒泡排序
+def mao_pao(list_num):
+    for i in range(len(list_num)):
+        for j in range(len(list_num) - 1):
+            if list_num[j] > list_num[j + 1]:
+                list_num[j], list_num[j + 1] = list_num[j + 1], list_num[j]
+    print(list_num)
+
+
+# 回文
+def _(data):
+    count = 0
+    for i in range(len(data)):
+        left = i - 1
+        right = i + 1
+        while (left >= 0 and right <= len(data) - 1 and data[left] == data[right]):
+            count += 1
+            left -= 1
+            right += 1
+        left = i
+        right = i + 1
+        while (left >= 0 and right <= len(data) - 1 and data[left] == data[right]):
+            count += 1
+            left -= 1
+            right += 1
+    print(count)
+
+
+# 二叉树前序查找
+def pre_order_traversal(self, root):
+    if root is None:
+        return []
+    result = [root.val] + [self.pre_order_traversal(root.left)] + [self.pre_order_traversal(root.right)]
+    return result
+
+# map()函数的原型是map(function,iterable,……),返回map对象
+
+# 字典排序：dict_ = sorted(dict_.items(),key=lambda x:x[0]) 返回列表元组
+
+# 先找跟目录下的conftest下的类夹具->测试目录->测试目录下conftest里的类夹具->测试用例module里的类前置
+# ->跟目录下的conftest下的函数夹具->测试目录->测试目录下conftest里的函数夹具->测试用例module里的函数前置
+# ->执行测试用例->
+
+pytest+requests+allure+yaml
+    pytest插件
+        pytest-html
+        pytest-xdist
+        pytest-rerunfailures
+        pytest-ordering
+        allure-pytest
+        pytest-base-url
+        pyyaml
+    pytest用例规则
+        1.模块名必须是test_开头或_test结尾
+        2.类名必须是Test开头,不能有init方法
+        3.方法名必须是test开头
+    pytest初始化文件
+        [pytest]
+        addopts = -vs -m "smoke or product" --alluredir=./temps --clean-alluredir
+        testpaths = ./testcases
+        python_files = test_*.py
+        python_classes = Test*
+        python_functions = test_*
+        base_url =
+        markers =
+            smoke:冒烟用例(在方法上添加@pytest.mark.smoke)
+            product:商品管理
+    pytest运行参数
+        -vs 详细调试
+        -n=2 多线程
+        --reruns=2 失败用例冲跑2次
+        -maxfail=2 出现2次失败停止
+        -x 出现1次失败就停止
+        --html=./reports/report.html
+        -m "smoke"  执行指定标记的用例
+    跳过测试用例
+        无条件跳过
+            在方法上添加@pytest.mark.skip(resason="")
+        有条件跳过
+            @pytest.mark.skipif(判断条件,reason="")
+    用例执行顺序
+        默认按照文件夹、模块、方法从上到下执行
+        @pytest.mark.run(order=1)修改执行顺序
+    用例前后置
+        setup teardown
+        setup_class teardown_class
+    部分前后置fixture
+        定义：
+            coftest.py
+            使用@pytest.fixture(scope="",autouse=,params=[],ids=[],name="")修饰函数,函数就变成了固件,yield唤醒后置
+        使用:
+            scope="function"：
+                autouse=True:所有函数自动使用
+                autouse=False：需要在函数传输这个fixture函数名
+            scope="class":
+                autouse=True:所有类自动使用
+                autouse=False：在类上添加@pytest.mark.usefixtures("fixture函数名")
+            scope="module"
+                autouse=True:自动对模块下的多个类起作用
+            scope="session"
+                sutouse=True:当前session,在整个会话最前和最后执行一次
+            params=[]:
+                列表里有几个元素用例就会执行几次
+                传值：在fixture函数里添加参数(request),然后yield返回request.param
+                @pytest.fixture(scope="function",autouse=False,arams=[])
+                def exec_sql(request):
+                    yield request.param
+            ids=[],必须和params一起使用:
+                参数化时参数的别名
+            name="":
+                fixture的别名,如果添加了固件的别名,使用时一定要使用固件别名
+    pytest执行顺序
+        1.先找当前目录下的coftest.py里面的类级别夹具
+        2.再找pytest.ini下的用例目录
+        3.再找用例目录下的coftest.py里面的类级别夹具
+        4.setup类级别
+        5.当前目录、用例目录下coftest.py里的函数级别夹具
+        6.执行测试用例
+        7.teardown函数界别、coftest函数级别
+        8.teardown类级别、coftest类级别
+    pytest集成allure
+        1.下载allure-pytest库
+        2.现在allure zip包,解压后配置环境变量
+        3.生成allure临时文件--alluredir=./temps --clean-alluredir
+        4.生成allure报告os.system("allure generator ./temps -o ./reporet --clean")
+        修改allure logo
+            1.打开allure/config/allure.yml配置文件,添加-custom-logo-plugin/static
+            2.将logo放在plugins/custom-logo-plugin/static目录下
+            3.打开plugins/custom-logo-plugin/static/style.css,修改样式
+        用例描述：
+            import allure
+            @allure.epic("项目名称")
+            @allure.feature("模块名称")
+            class TestProduct(object):
+                @allure.story("接口名称")
+                @allure.severity(allure.severity_level.NORMAL) #优先级别
+                @allure.link("接口链接")
+                @allure.issue("bug链接")
+                @allure.testcase("测试用例链接")
+                def test_(self):
+                    allure.dynamic.title("用例标题")
+                    allure.dynamic.description("用例描述")
+                    with allure.step("用例步骤描述"):
+                        pass
+                    allure.attach(body="截图内容",name="截图名称",attachment_type=allure.attachment_type.PNG)
+                    print("test")
+        allure访问：
+            allure open ./reports生成新的报告地址
+    yaml
+        &：锚点,*：引用,<<:合并
+        标量,对象-字典,数组-列表
+        读取：yaml.load(f,yaml.full_load)
+        写入：yaml.dump(data,stream=f,allow_unicode=True)
+        清空：f.truncate()
+    数据驱动：
+        定义：
+            @pytest.mark.parametrize("caseinfo",[])
+            def test_(self,caseinfo):
+                print(caseinfo)
+
+ form-data:既有表单参数也有文件上传      files
+ x-www-form-urlencoded:表单               data
+ raw：json(json) xml(data) text(data) html(data)
+ binary:二进制                                        data
+
+ session和cookie的区别
+    1.保存位置：cookie存在客户端，session存在服务端
+    2.大小限制：cookie有限制,session没有大小限制
+    3.安全性：cookie在客户端对用户可见不安全，session相对安全
+    4.使用方式：
+        cookie：如果设置了过期时间，cookie会保存在本地磁盘，过期后删除，如果没有设置时间关闭浏览器就过期
+        session：如果请求中携带sessionid则就会找相应的session对象，如果没有携带服务端会创建session对象并且返回给客户端
+ http和https的区别
+    1.http是明文传输，https是SSL加密传输
+    2.https需要ca
+    3.http的连接是无状态的，http是ssl+http
+    4.http的端口80，https是443
+
+断言：
+    状态断言
+    业务断言：相等、包含
+    数据库断言
+
+加密：
+    非对称加密：base64
+    对称加密：RSA
+    只加密不解密：MD5
+
+接口签名规则：
+    1.先获取到所有的参数，包括params和data里的，然后进行ascii升序排序
+    2.把排序后的参数用=连接，使用&拼接
+    3.把appid和appsecret拼接到头部
+    4.把订单号和时间戳拼接到尾部
+    5.进行32位的MD5加密，加密后再大写获得sign
+    6.把sign放到url，一般放在header里，发送请求
+
+接口自动化流程：
+    1.清空extract.yaml文件
+    2.加载测试用例
+    3.数据驱动
+    4.在请求前热加载替换yaml里的参数为正确的参数
+        读配置文件、接口加密、签名
+    5.标准化测试用例，判断用例格式是否正确
+    6.发送请求
+    7.提取中间变量
+    8.断言
+
+filter(func,iterable):返回filter对象，将序列里的所有元素根据func进行判断，True则放入新的序列里
+map(func,iterable):返回map对象，将序列里的所有元素根据func进行修改，然后放入新的序列里
+zip(iterable1,iterable2):返回zip对此昂，将iterable1里的元素作为key，将iterable1里的元素作为value，存放在zip对象里
+reduce(func,iterable):返回序列里的每个元素经过func后的累计结果，functools

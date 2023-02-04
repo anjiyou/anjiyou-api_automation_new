@@ -1,0 +1,14 @@
+-
+  feature: 我的订单
+  story: 订单详情
+  title: 成功获取订单详情
+  request:
+    method: post
+    url: ?s=order/detail
+    params:
+      token: ${read_yaml(token)}
+    json:
+      id: ${read_yaml(id)}
+  validate:
+    code: 200
+    contains: success

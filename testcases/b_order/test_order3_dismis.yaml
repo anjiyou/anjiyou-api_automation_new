@@ -1,0 +1,14 @@
+-
+  feature: 我的订单
+  story: 订单取消
+  title: 成功取消订单
+  request:
+    method: post
+    url: ?s=order/cancel
+    params:
+      token: ${read_yaml(token)}
+    json:
+      id: ${read_yaml(id)}
+  validate:
+    code: 200
+    contains: 已取消
