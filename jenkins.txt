@@ -1,0 +1,22 @@
+jenkinspipeline流程
+pipeline{
+    agent{
+        node{}
+    }
+    parameters{}
+    environment{}
+    stages{
+        stage(){
+            options{timeout(time:100,unit:"MINUTES")}
+            when{}
+            steps{
+                script{}
+            }
+        }
+    }
+    post{
+        always{
+            script{}
+        }
+    }
+}
