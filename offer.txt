@@ -347,3 +347,5 @@ map(func,iterable):返回map对象，将序列里的所有元素根据func进行
 zip(iterable1,iterable2):返回zip对象，将iterable1里的元素作为key，将iterable1里的元素作为value，存放在zip对象里
 reduce(func,iterable):返回序列里的每个元素经过func后的累计结果，functools
 sorted(iterable,key=func,reserve=)：排序，返回list
+
+from xml.dom.minidom import parser:解析xml文件
