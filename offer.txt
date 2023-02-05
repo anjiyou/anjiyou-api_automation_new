@@ -261,7 +261,7 @@ pytest+requests+allure+yaml
         3.生成allure临时文件--alluredir=./temps --clean-alluredir
         4.生成allure报告os.system("allure generator ./temps -o ./reporet --clean")
         修改allure logo
-            1.打开allure/config/allure.yml配置文件,添加-custom-logo-plugin/static
+            1.打开allure/config/allure.yml配置文件,添加-custom-logo-plugin
             2.将logo放在plugins/custom-logo-plugin/static目录下
             3.打开plugins/custom-logo-plugin/static/style.css,修改样式
         用例描述：
