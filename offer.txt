@@ -352,3 +352,9 @@ reduce(func,iterable):返回序列里的每个元素经过func后的累计结果
 sorted(iterable,key=func,reserve=)：排序，返回list
 
 from xml.dom.minidom import parser:解析xml文件
+
+测试阶段
+    单元测试：单个模块功能测试，开发阶段，需求分析阶段
+    集成测试：对个模块关联测试
+    系统测试：开发结束，整个系统测试，包含性能测试、兼容性测试
+    验收测试：系统上线，由客户或第三方进行验收测试
