@@ -358,3 +358,6 @@ from xml.dom.minidom import parser:解析xml文件
     集成测试：对个模块关联测试
     系统测试：开发结束，整个系统测试，包含性能测试、兼容性测试
     验收测试：系统上线，由客户或第三方进行验收测试
+
+删除list里的空元素：
+filter(bool,list)
