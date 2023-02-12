@@ -181,6 +181,12 @@ def pre_order_traversal(self, root):
 # ->跟目录下的conftest下的函数夹具->测试目录->测试目录下conftest里的函数夹具->测试用例module里的函数前置
 # ->执行测试用例->
 
+pytest优点：
+    1.集成第三方库实现功能的扩展
+    2.实现报告定制化
+    3.集成logging日志，记录每一步操作过程，日志监控，快速定位问题
+    4.集成数据库
+    5.敏捷开发，接口数量巨大实现版本控制
 pytest+requests+allure+yaml
     pytest插件
         pytest-html
